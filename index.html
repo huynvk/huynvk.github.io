@@ -2,31 +2,13 @@
 layout: default
 ---
 
-<!-- <div class="landing-container"><div class="landing-overlay"></div></div> -->
-
-<section class="hero is-large landing-container">
-  {% include nav.html %}
-  <div class="hero-body"><div class="landing-overlay"></div></div>
-</section>
-
-<footer class="footer">
-  <div class="content has-text-centered">
-    <p>
-      <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>.
-      The source code is licensed
-      <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The
-      website content is licensed
-      <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
-        >CC BY NC SA 4.0</a
-      >.
-    </p>
-  </div>
-</footer>
-
-<!-- <section class="hero is-fullheight">
+<section class="hero is-fullheight landing-container">
   <div class="hero-head">{% include nav.html %}</div>
 
-  <div class="hero-body "><div class="container has-text-centered"></div></div>
+  <div class="hero-body">
+    <div class="hero-body"><div class="landing-overlay"></div></div>
+    <div class="container has-text-centered"></div>
+  </div>
 
-  <div class="hero-foot is-white"><p>Footer</p></div>
-</section> -->
+  <div class="hero-foot is-white">{% include footer.html %}</div>
+</section>
