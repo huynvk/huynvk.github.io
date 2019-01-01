@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %link{:href => "/assets/images/short-icon.png", :rel => "icon"}/
+    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "/assets/css/style.css", :rel => "stylesheet", :type => "text/css"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title {{ site.title }}
+    %meta{:content => "{{ site.description }}", :name => "description"}/
+  %body
+    {{ content }}
