@@ -1,0 +1,18 @@
+.is-white { background-color: white; }
+
+.is-blue { background-color: #4a90e2; }
+
+.navbar:hover { background-color: white; }
+
+.landing-container { background-image: url("/assets/images/background.jpg"); background-size: cover; background-position: center; position: relative; }
+.landing-container .landing-overlay { position: absolute; left: 0; top: 0; background: radial-gradient(transparent, rgba(0, 0, 0, 0.6)); width: 100%; height: 100%; }
+.landing-container .countdown-box { color: black; background-color: rgba(255, 255, 255, 0.6); border-radius: 10px 10px 0 0; padding: 20px; width: 80%; z-index: 2; }
+.landing-container .flex-end { align-items: flex-end !important; display: flex; justify-content: center; padding-bottom: 0; }
+.landing-container p { margin-bottom: 15px; }
+.landing-container .button { padding-left: 20px; padding-right: 20px; }
+.landing-container .logo { width: 100px; }
+
+.home-section { padding: 120px; }
+.home-section.is-white .title { color: #4a90e2; }
+.home-section.is-blue .title { color: white; }
+.home-section img { height: auto; }
