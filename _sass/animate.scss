@@ -1,0 +1,43 @@
+/* Override original animation in library animate.css for custom animation
+ * Ref: https://github.com/daneden/animate.css
+ */
+
+$fadeInHeight: 48px;
+
+.animated.little-slow {
+  -webkit-animation-duration: 1500ms;
+  animation-duration: 1500ms;
+}
+
+@-webkit-keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -$fadeInHeight, 0);
+    transform: translate3d(0, -$fadeInHeight, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -$fadeInHeight, 0);
+    transform: translate3d(0, -$fadeInHeight, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}

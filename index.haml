@@ -2,9 +2,10 @@
 layout: default
 ---
 
-%section.hero.is-fullheight.landing-container
+{% haml nav.haml %}
+
+%section.hero.is-large.landing-container
   .hero-head
-    {% haml nav.haml %}
   .hero-body.flex-end
     .landing-overlay
 
@@ -23,36 +24,40 @@ layout: default
       %a.button.has-background-info.has-text-white.is-medium Đăng kí
 
 %section.home-section.is-white
-  .container
+  .container.animate-queued
     .columns
-      .column
-        %img(src="/assets/images/health.jpg")
-      .column
-        %p.title Theo dõi sức khoẻ
-        %p.description Theo dõi tuổi thai và các chỉ số sức khoẻ
-        %p.content Theo dõi tuổi thai và các chỉ số sức khoẻ như chiều cao, cần nặng của mẹ và bé. Giúp mẹ hiểu rõ hơn về sức khoẻ của hai mẹ con để có cách chăm sóc sức khoẻ phù hợp.
+      .column.invisible-for-animation
+        %img.invisible-for-animation(src="/assets/images/health.jpg")
+      .column.invisible-for-animation
+        %p.title.invisible-for-animation Theo dõi sức khoẻ
+        %p.content.invisible-for-animation Theo dõi tuổi thai và các chỉ số sức khoẻ như chiều cao, cần nặng của mẹ và bé. Giúp mẹ hiểu rõ hơn về sức khoẻ của hai mẹ con để có cách chăm sóc sức khoẻ phù hợp.
 
 %section.home-section.is-blue
-  .container.has-text-white
+  .container.has-text-white.animate-queued
     .columns
-      .column
-        %p.title Thông tin chọn lọc
-        %p.description Chọn lọc những thông tin cần thiết nhất cho mẹ
-        %p.content Chọn lọc và giới thiệu cho mẹ những thông tin cần thiết nhất tuỳ theo từng giai đoạn phát triển của bé, giúp cho mẹ tiết kiệm tối đa thời gian tìm kiếm và kiểm chứng thông tin. Qua đó, mẹ có thể dành nhiều thời gian hơn để nghỉ ngơi và thư giãn.
-      .column
-        %img(src="/assets/images/books.jpg")
+      .column.invisible-for-animation
+        %p.title.invisible-for-animation Thông tin chọn lọc
+        %p.content.invisible-for-animation Chọn lọc và giới thiệu cho mẹ những thông tin cần thiết nhất tuỳ theo từng giai đoạn phát triển của bé, giúp cho mẹ tiết kiệm tối đa thời gian tìm kiếm và kiểm chứng thông tin. Qua đó, mẹ có thể dành nhiều thời gian hơn để nghỉ ngơi và thư giãn.
+      .column.invisible-for-animation
+        %img.invisible-for-animation(src="/assets/images/books.jpg")
 
 %section.home-section.is-white
-  .container
-    %p.title Gợi ý
-    %p.description Gợi ý cho mẹ những việc nên làm
-    %p.content Gợi ý cho mẹ việc mẹ cần làm, những thứ cần chuẩn bị, những thông tin hoặc sản phẩm hữu ích.
+  .container.animate-queued
+    .columns
+      .column.invisible-for-animation
+        %img.invisible-for-animation(src="/assets/images/health.jpg")
+      .column.invisible-for-animation
+        %p.title.invisible-for-animation Gợi ý cho mẹ
+        %p.content.invisible-for-animation Gợi ý cho mẹ việc mẹ cần làm, những thứ cần chuẩn bị, những thông tin hoặc sản phẩm hữu ích.
 
 %section.home-section.is-blue
-  .container.has-text-white
-    %p.title Miễn phí
-    %p.description Miễn phí và sẽ luôn như thế
-    %p.content Shino là ứng dụng miễn phí cho người Việt và sẽ luôn như thế. Tất cả mọi người đều có thể tải ứng dụng miễn phí từ Google Play (Android) hoặc App Store (iOS)
+  .container.has-text-white.animate-queued
+    .columns
+      .column.invisible-for-animation
+        %p.title.invisible-for-animation Miễn phí, và sẽ luôn như vậy
+        %p.content.invisible-for-animation Shino là ứng dụng miễn phí cho người Việt và sẽ luôn như thế. Tất cả mọi người đều có thể tải ứng dụng miễn phí từ Google Play (Android) hoặc App Store (iOS)
+      .column.invisible-for-animation
+        %img.invisible-for-animation(src="/assets/images/books.jpg")
 
   
 {% haml footer.haml %}
