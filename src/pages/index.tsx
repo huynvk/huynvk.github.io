@@ -17,7 +17,7 @@ interface IPost {
   publishDate: string
   description: string
   heroImage: {
-    sizes: {
+    fluid: {
       aspectRatio: number
       src: string
       srcSet: string
@@ -58,7 +58,7 @@ class HomePage extends React.Component<IProps, {}> {
               title={featuredPost.title}
               slug={featuredPost.slug}
               publishDate={featuredPost.publishDate}
-              // description={featuredPost.description}
+              description={featuredPost.description}
               heroImage={featuredPost.heroImage}
             />
           </div>
@@ -69,7 +69,7 @@ class HomePage extends React.Component<IProps, {}> {
                 title={post.title}
                 slug={post.slug}
                 publishDate={post.publishDate}
-                // description={post.description}
+                description={post.description}
                 heroImage={post.heroImage}
               />
             ))}
@@ -90,15 +90,13 @@ export const pageQuery = graphql`
       edges {
         node {
           title
-          body {
-            body
-          }
-          description {
-            description
-          }
+          description
           heroImage {
-            sizes(maxWidth: 663, maxHeight: 338, resizingBehavior: SCALE) {
-              ...GatsbyContentfulSizes_withWebp
+            fluid {
+              sizes
+              aspectRatio
+              src
+              srcSet
             }
           }
           slug

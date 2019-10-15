@@ -61,5 +61,27 @@ module.exports = {
       resolve: `gatsby-source-contentful`,
       options: contentfulConfig,
     },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [],
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images-contentful`,
+            options: {
+              maxWidth: 1020,
+              showCaptions: true,
+            },
+          },
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-smartypants`,
+        ],
+      },
+    },
   ],
 }

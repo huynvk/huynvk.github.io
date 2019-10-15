@@ -7,9 +7,9 @@ interface IProps {
   title: string
   slug: string
   publishDate: string
-  // description: string
+  description: string
   heroImage: {
-    sizes: {
+    fluid: {
       aspectRatio: number
       src: string
       srcSet: string
@@ -78,18 +78,18 @@ const StyledContainer = styled.div`
 `
 
 const ThumbnailPost = (props: IProps) => {
-  const { slug, heroImage, title, publishDate } = props
+  const { slug, heroImage, title, description, publishDate } = props
 
   return (
     <StyledContainer>
       <article>
         <Link to={`/${slug}`}>
           <div className="thumb">
-            <Image sizes={heroImage.sizes} alt="" />
+            <Image sizes={heroImage.fluid} alt="" />
           </div>
           <div className="content">
             <h2>{title}</h2>
-            {/* <p className="description">{description}</p> */}
+            <p className="description">{description}</p>
             <div className="info">{publishDate}</div>
           </div>
         </Link>
