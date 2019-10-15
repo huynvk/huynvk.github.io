@@ -1,14 +1,11 @@
 import React from "react"
 import styled from "styled-components"
+import { graphql } from "gatsby"
+import get from "lodash/get"
 
 import Layout from "@components/Layout"
 import FeaturedPost from "@components/FeaturedPost"
 import ThumbnailPost from "@components/ThumbnailPost"
-import Footer from "@components/Footer"
-
-import exampleImage1 from "../../static/featured-example.jpeg"
-import exampleImage2 from "../../static/featured-example.jpeg"
-import exampleImage3 from "../../static/featured-example.jpeg"
 
 interface IProps {
   location: ILocation
@@ -17,15 +14,26 @@ interface IProps {
 interface IPost {
   title: string
   slug: string
-  publishedDate: string
+  publishDate: string
   description: string
-  heroImage: string
+  heroImage: {
+    sizes: {
+      aspectRatio: number
+      src: string
+      srcSet: string
+      sizes: string
+    }
+  }
 }
 
 const StyledContainer = styled.div`
+  .featured-post-container {
+    margin-bottom: ${props => props.theme.rhythm(1.25)};
+  }
+
   .thumbnail-post-container {
     display: flex;
-    margin-bottom: ${props => props.theme.rhythm(1.25)};
+    flex-wrap: wrap;
   }
 
   @media only screen and (max-width: 767px) {
@@ -37,60 +45,35 @@ const StyledContainer = styled.div`
 
 class HomePage extends React.Component<IProps, {}> {
   render() {
-    const recentPosts = [
-      {
-        title: "Dealing with Timezone and Moment.js handling",
-        slug: "dealing-with-timezone-and-moment-handling",
-        publishedDate: "Dec 22, 2018",
-        description:
-          "You’re a good developer. You and your nice team are producing useful features for your clients.",
-        heroImage: exampleImage1,
-      },
-      {
-        title: "Dockerize NodeJS application (Part 7 — Final)",
-        slug: "dockerize-nodejs-application-part-7-final",
-        publishedDate: "Dec 16, 2018",
-        description:
-          "This post in one of part in my series about Building real APIs with NodeJS for beginners. All main contents in this series in case we want to navigate quickly.",
-        heroImage: exampleImage2,
-      },
-      {
-        title: "Writing Unit test for API NodeJS by Jest framework (Part 6)",
-        slug: "writing-unit-test-for-api-nodejs-by-jest-framework-part-6",
-        publishedDate: "Dec 12, 2018",
-        description:
-          "When I investigated how to write unit tests for API in NodeJS, most of the articles I found that mention how to implement with Mocha, Chai, istanbul, etc…",
-        heroImage: exampleImage3,
-      },
-    ]
+    const posts = get(this, "props.data.allPosts.edges").map(
+      (item: { node: IPost }) => item.node
+    )
+    const featuredPost = posts.shift()
 
     return (
       <Layout location={this.props.location}>
         <StyledContainer>
-          <FeaturedPost />
+          <div className="featured-post-container">
+            <FeaturedPost
+              title={featuredPost.title}
+              slug={featuredPost.slug}
+              publishDate={featuredPost.publishDate}
+              // description={featuredPost.description}
+              heroImage={featuredPost.heroImage}
+            />
+          </div>
           <div className="thumbnail-post-container">
-            {recentPosts.map((post: IPost) => (
+            {posts.map((post: IPost) => (
               <ThumbnailPost
+                key={post.slug}
                 title={post.title}
                 slug={post.slug}
-                publishedDate={post.publishedDate}
-                description={post.description}
+                publishDate={post.publishDate}
+                // description={post.description}
                 heroImage={post.heroImage}
               />
             ))}
           </div>
-          <div className="thumbnail-post-container">
-            {recentPosts.map((post: IPost) => (
-              <ThumbnailPost
-                title={post.title}
-                slug={post.slug}
-                publishedDate={post.publishedDate}
-                description={post.description}
-                heroImage={post.heroImage}
-              />
-            ))}
-          </div>
-          <Footer />
         </StyledContainer>
       </Layout>
     )
@@ -98,3 +81,30 @@ class HomePage extends React.Component<IProps, {}> {
 }
 
 export default HomePage
+
+export const pageQuery = graphql`
+  query HomePageQuery {
+    allPosts: allContentfulBlogPost(
+      sort: { fields: [publishDate], order: DESC }
+    ) {
+      edges {
+        node {
+          title
+          body {
+            body
+          }
+          description {
+            description
+          }
+          heroImage {
+            sizes(maxWidth: 663, maxHeight: 338, resizingBehavior: SCALE) {
+              ...GatsbyContentfulSizes_withWebp
+            }
+          }
+          slug
+          publishDate(formatString: "MMM DD, YYYY")
+        }
+      }
+    }
+  }
+`

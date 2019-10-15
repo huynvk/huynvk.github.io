@@ -1,13 +1,21 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import Image from "gatsby-image"
 
 interface IProps {
   title: string
   slug: string
-  publishedDate: string
-  description: string
-  heroImage: string
+  publishDate: string
+  // description: string
+  heroImage: {
+    sizes: {
+      aspectRatio: number
+      src: string
+      srcSet: string
+      sizes: string
+    }
+  }
 }
 
 const StyledContainer = styled.div`
@@ -70,19 +78,19 @@ const StyledContainer = styled.div`
 `
 
 const ThumbnailPost = (props: IProps) => {
-  const { slug, heroImage, title, description, publishedDate } = props
+  const { slug, heroImage, title, publishDate } = props
 
   return (
     <StyledContainer>
       <article>
         <Link to={`/${slug}`}>
           <div className="thumb">
-            <img src={heroImage} alt="" />
+            <Image sizes={heroImage.sizes} alt="" />
           </div>
           <div className="content">
             <h2>{title}</h2>
-            <p className="description">{description}</p>
-            <div className="info">{publishedDate}</div>
+            {/* <p className="description">{description}</p> */}
+            <div className="info">{publishDate}</div>
           </div>
         </Link>
       </article>

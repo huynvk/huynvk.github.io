@@ -1,8 +1,24 @@
 import React from "react"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import Image from "gatsby-image"
 
-import exampleImage from "../../static/featured-example.jpeg"
+interface IProps {
+  title: string
+  slug: string
+  publishDate: string
+  // description: {
+  //   description:
+  // }
+  heroImage: {
+    sizes: {
+      aspectRatio: number
+      src: string
+      srcSet: string
+      sizes: string
+    }
+  }
+}
 
 const StyledContainer = styled.div`
   article {
@@ -56,24 +72,19 @@ const StyledContainer = styled.div`
   }
 `
 
-const FeaturedPost = () => {
-  const title = "Convert flowed-project to Typescript"
-  const slug = "convert-flowed-project-to-typescript"
-  const heroImage = exampleImage
-  const publishDate = "Jan 23, 2018"
-  const description =
-    "First, I do not recommend everyone to move to TypeScript. Who's being happy with Flow, it’s fine"
+const FeaturedPost = (props: IProps) => {
+  const { slug, heroImage, title, publishDate } = props
 
   return (
     <StyledContainer>
       <Link to={`/${slug}`}>
         <article>
           <div className="thumb">
-            <img src={heroImage} alt="" />
+            <Image sizes={heroImage.sizes} alt="" />
           </div>
           <div className="content">
-            <h3>{title}</h3>
-            <p className="description">{description}</p>
+            <h2>{title}</h2>
+            {/* <p className="description">{description}</p> */}
             <div className="info">{publishDate}</div>
           </div>
         </article>
