@@ -37,7 +37,7 @@ const Navigation = () => (
   <StyledContainer>
     <div className="inner-container">
       <Link to={routeConstants.home.path} className="logo">
-        <img src={logo} alt="Logo" width="198" height="76" />
+        Huy Ngo
       </Link>
     </div>
   </StyledContainer>
