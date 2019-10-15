@@ -21,6 +21,12 @@ if (!spaceId || !accessToken) {
 }
 
 module.exports = {
+  siteMetadata: {
+    title: `Huy Ngo`,
+    author: `Huy Ngo`,
+    description: `Huy Ngo Personal Blog | Programming and Life`,
+    siteUrl: `https://www.huynvk.dev`,
+  },
   plugins: [
     `gatsby-plugin-typescript`,
     {
@@ -80,6 +86,7 @@ module.exports = {
           },
           `gatsby-remark-prismjs`,
           `gatsby-remark-smartypants`,
+          `gatsby-plugin-react-helmet`,
         ],
       },
     },

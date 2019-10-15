@@ -6,6 +6,7 @@ import get from "lodash/get"
 import Layout from "@components/Layout"
 import FeaturedPost from "@components/FeaturedPost"
 import ThumbnailPost from "@components/ThumbnailPost"
+import SEO from "@components/SEO"
 
 interface IProps {
   location: ILocation
@@ -53,6 +54,7 @@ class HomePage extends React.Component<IProps, {}> {
     return (
       <Layout location={this.props.location}>
         <StyledContainer>
+          <SEO title="Huy Ngo Personal Blog | Programming and Life" />
           <div className="featured-post-container">
             <FeaturedPost
               title={featuredPost.title}
