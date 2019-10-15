@@ -9,4 +9,7 @@ export const routeConstants = {
   home: {
     path: "/",
   },
+  blog: {
+    path: "/blog",
+  },
 }

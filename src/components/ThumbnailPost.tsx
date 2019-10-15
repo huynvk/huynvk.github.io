@@ -83,7 +83,7 @@ const ThumbnailPost = (props: IProps) => {
   return (
     <StyledContainer>
       <article>
-        <Link to={`/${slug}`}>
+        <Link to={`/blog/${slug}`}>
           <div className="thumb">
             <Image sizes={heroImage.fluid} alt="" />
           </div>

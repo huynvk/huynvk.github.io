@@ -1,10 +1,10 @@
-import React from 'react'
-import styled, { ThemeProvider } from 'styled-components'
+import React from "react"
+import styled, { ThemeProvider } from "styled-components"
 
-import Navigation from '@components/Navigation'
+import Navigation from "@components/Navigation"
 
-import { rhythm, scale } from '@utils/typography'
-import { colors } from '@constants/index'
+import { rhythm, scale } from "@utils/typography"
+import { colors } from "@constants/index"
 
 interface ILayout {
   location: ILocation
@@ -24,8 +24,7 @@ const AppContainer = styled.div`
   background: ${props => props.theme.colors.mainBackground};
 `
 
-const HeaderContainer = styled.div`
-`
+const HeaderContainer = styled.div``
 
 const MainContainer = styled.div`
   flex: 1;
@@ -35,6 +34,7 @@ const MainContainer = styled.div`
   main {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 4rem;
     max-width: ${props => props.theme.rhythm(40)};
     padding: 0 ${props => props.theme.rhythm(0.5)};
   }
