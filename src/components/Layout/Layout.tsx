@@ -5,6 +5,7 @@ import Navigation from "@components/Navigation"
 
 import { rhythm, scale } from "@utils/typography"
 import { colors } from "@constants/index"
+import "./Layout.css"
 
 interface ILayout {
   location: ILocation
