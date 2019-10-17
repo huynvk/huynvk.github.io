@@ -1,4 +1,4 @@
-# Get started with ETH smart contract
+# ETH Smart Contract - Part 1: Getting started
 
 ## Set up project with Truffle
 
@@ -47,6 +47,16 @@ contract SimpleStorage {
     function get() public view returns (uint) {
         return storedData;
     }
+}
+```
+
+Create a new file `2_initial_simple_storage.js` inside `migrations` folder:
+
+```js
+const SimpleStorage = artifacts.require("SimpleStorage")
+
+module.exports = function(deployer) {
+  deployer.deploy(SimpleStorage)
 }
 ```
 
