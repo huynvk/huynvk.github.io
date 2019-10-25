@@ -3,6 +3,9 @@ import customTheme from "typography-theme-github"
 
 customTheme.overrideThemeStyles = () => {
   return {
+    html: {
+      fontSize: "21px",
+    },
     "a.gatsby-resp-image-link": {
       boxShadow: `none`,
     },

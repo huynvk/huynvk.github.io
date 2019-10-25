@@ -36,7 +36,7 @@ const MainContainer = styled.div`
     margin-left: auto;
     margin-right: auto;
     margin-top: 4rem;
-    max-width: ${props => props.theme.rhythm(40)};
+    max-width: ${props => props.theme.rhythm(25)};
     padding: 0 ${props => props.theme.rhythm(0.5)};
   }
 `

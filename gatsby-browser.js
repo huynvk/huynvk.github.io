@@ -1,4 +1,4 @@
-import "prismjs/themes/prism-solarizedlight.css"
+import "prismjs/themes/prism.css"
 
 // custom typefaces
 import "typeface-montserrat"
