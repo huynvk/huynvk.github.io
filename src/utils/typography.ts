@@ -7,19 +7,28 @@ customTheme.overrideThemeStyles = () => {
       fontSize: "21px",
     },
     "a.gatsby-resp-image-link": {
-      boxShadow: `none`,
+      boxShadow: "none",
     },
     a: {
-      color: `#222`,
+      color: "#222",
     },
     "a:hover": {
-      textDecoration: `none`,
+      textDecoration: "none",
     },
     "h1, h2, h3": {
-      borderBottomStyle: `none`,
+      borderBottomStyle: "none",
+    },
+    h2: {
+      marginTop: "2.5rem",
+    },
+    p: {
+      marginTop: "1rem",
+      marginBottom: "1rem",
     },
   }
 }
+
+console.log("customTheme", customTheme)
 
 const typography = new Typography(customTheme)
 
@@ -33,7 +42,7 @@ typography.overrideStyles = () => {
 }
 
 // Hot reload typography in development.
-if (process.env.NODE_ENV !== `production`) {
+if (process.env.NODE_ENV !== "production") {
   typography.injectStyles()
 }
 
