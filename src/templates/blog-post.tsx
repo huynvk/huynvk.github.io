@@ -4,6 +4,7 @@ import get from "lodash/get"
 import styled from "styled-components"
 import Image from "gatsby-image"
 
+import Author from "@components/Author"
 import Layout from "@components/Layout"
 import SEO from "@components/SEO"
 
@@ -34,12 +35,14 @@ const StyledContainer = styled.div`
   .header-container {
     h1 {
       margin-top: 0;
+      margin-bottom: 0;
     }
 
-    .published-date {
-      ${props => ({ ...props.theme.scale(-0.5) })}
-      margin-top: ${props => props.theme.rhythm(-0.75)};
-      color: ${props => props.theme.colors.gray600};
+    .description {
+      color: ${props => props.theme.colors.gray500};
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
     }
   }
 
@@ -69,12 +72,12 @@ class BlogPostTemplate extends React.Component<IProps, {}> {
           <SEO title={`Huy Ngo | ${post.title}`} />
           <div className="header-container">
             <h1>{post.title}</h1>
-            <div className="published-date">{post.publishDate}</div>
+            <div className="description">{post.description}</div>
+            <Author publishDate={post.publishDate} />
             <div className="hero-image">
               <Image sizes={post.heroImage.fluid} alt="" />
             </div>
           </div>
-          <div className="description-container">{post.description}</div>
           <div
             className="body-container"
             dangerouslySetInnerHTML={{

@@ -75,7 +75,7 @@ const FeaturedPost = (props: IProps) => {
 
   return (
     <StyledContainer>
-      <Link to={`/${slug}`}>
+      <Link to={`/blog/${slug}`}>
         <article>
           <div className="thumb">
             <Image sizes={heroImage.fluid} alt="" />
