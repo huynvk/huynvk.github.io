@@ -111,38 +111,3 @@ instance.set(9999)
 instance.get.call() // Output: <BN: 270f>
 instance.get.call().then(value => console.log(parseInt(value, 10))) // Output: 9999
 ```
-
-## Deploy to RinkeBy test net
-
-Update `SimpleStorage.sol` contract to add ability to kill the contract in case we want to bring it down in future:
-
-```c++
-pragma solidity ^0.5.8;
-
-contract SimpleStorage {
-    uint public storedData;
-    address payable public owner;
-
-    constructor() public {
-        owner = msg.sender;
-        storedData = 0;
-    }
-
-    function set(uint x) public {
-        storedData = x;
-    }
-
-    function get() public view returns (uint) {
-        return storedData;
-    }
-
-    modifier restricted() {
-        require(msg.sender == owner, 'Require owner');
-        _;
-    }
-
-    function kill() public restricted  { selfdestruct(owner); }
-}
-```
-
-Install [Geth (Go Ethereum)](https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Mac)

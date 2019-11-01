@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useState, useRef } from "react"
+import { useOnClickOutside } from "@utils/hook"
 import styled, { ThemeProvider } from "styled-components"
 
 import Navigation from "@components/Navigation"
@@ -41,23 +42,27 @@ const MainContainer = styled.div`
   }
 `
 
-class Layout extends React.Component<ILayout, {}> {
-  render() {
-    const { children } = this.props
+function Layout({ children }) {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const node = useRef(null)
+  useOnClickOutside(node, () => setMenuOpen(false))
 
-    return (
-      <ThemeProvider theme={theme}>
-        <AppContainer>
-          <HeaderContainer>
-            <Navigation />
-          </HeaderContainer>
-          <MainContainer>
-            <main>{children}</main>
-          </MainContainer>
-        </AppContainer>
-      </ThemeProvider>
-    )
-  }
+  return (
+    <ThemeProvider theme={theme}>
+      <AppContainer>
+        <HeaderContainer>
+          <Navigation
+            ref={node}
+            open={menuOpen}
+            onToggleMenu={() => setMenuOpen(!menuOpen)}
+          />
+        </HeaderContainer>
+        <MainContainer>
+          <main>{children}</main>
+        </MainContainer>
+      </AppContainer>
+    </ThemeProvider>
+  )
 }
 
 export default Layout

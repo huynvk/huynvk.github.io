@@ -1,0 +1,111 @@
+:root {
+  /* colors */
+  --colorWhite: #fff;
+  --colorBlack: #000;
+
+  @value colorWhite: var(--colorWhite);
+  @value colorBlack: var(--colorBlack);
+
+  /* yellows */
+  --colorYellow: #fff24d;
+  --colorYellow100: #ffff85;
+  --colorYellow200: #fff240;
+  --colorYellow300: #ffd45a;
+
+  @value colorYellow100: var(--colorYellow100);
+  @value colorYellow200: var(--colorYellow200);
+  @value colorYellow300: var(--colorYellow300);
+
+  /* greys */
+  --colorGrey100: #fbfbfe;
+  --colorGrey200: #f6f6fb;
+  --colorGrey300: #eceaf3;
+  --colorGrey400: #dad8e5;
+  --colorGrey500: #c2c0d0;
+  --colorGrey600: #9c99aa;
+  --colorGrey700: #6b6879;
+  --colorGrey800: #464350;
+  --colorGrey900: #28282e;
+
+  @value colorGrey100: var(--colorGrey100);
+  @value colorGrey200: var(--colorGrey200);
+  @value colorGrey300: var(--colorGrey300);
+  @value colorGrey400: var(--colorGrey400);
+  @value colorGrey500: var(--colorGrey500);
+  @value colorGrey600: var(--colorGrey600);
+  @value colorGrey700: var(--colorGrey700);
+  @value colorGrey800: var(--colorGrey800);
+  @value colorGrey900: var(--colorGrey900);
+
+  /* cheese shades */
+  --cheeseColor: #ffe877;
+
+  /* themes */
+  --lightTheme: 100%, 79%;
+  --penumbraTheme: 100%, 68%;
+  --darkTheme: 100%, 46%;
+
+  /* primary */
+  --colorPrimary1: hsl(325, var(--lightTheme));
+  --colorPrimary2: hsl(325, var(--penumbraTheme));
+  --colorPrimary3: hsl(325, var(--darkTheme));
+
+  @value colorPrimary: var(--colorPrimary1);
+
+  /* secondary */
+  --colorSecondary1: hsl(193, var(--lightTheme));
+  --colorSecondary2: hsl(185, var(--penumbraTheme));
+  --colorSecondary3: hsl(189, var(--darkTheme));
+
+  @value colorSecondary: var(--colorSecondary1);
+
+  /* positve feedback */
+  --positive1: hsl(123, 82%, 83%);
+  --positive2: hsl(123, 100%, 69%);
+  --positive3: hsl(123, 63%, 57%);
+
+  /* negative feedback */
+  --negative1: hsl(20, 100%, 86%);
+  --negative2: hsl(12, 100%, 73%);
+  --negative3: hsl(12, 77%, 64%);
+
+  /* Affinity colors  */
+  --fireMainColor: #ff809b;
+  --fireSecondaryColor: #ffe9ef;
+  @value fireMainColor: var(--fireMainColor);
+
+  --waterMainColor: #35d1e7;
+  --waterSecondaryColor: #c9f4f4;
+  @value waterMainColor: var(--waterMainColor);
+
+  --windMainColor: #8bea63;
+  --windSecondaryColor: #d7ffbd;
+  @value windMainColor: var(--windMainColor);
+
+  --neutralMainColor: #b79afc;
+  --neutralSecondaryColor: #e4e0fc;
+  @value neutralMainColor: var(--neutralMainColor);
+
+  /* Exclusive wizards colors */
+  --moldMainColor: #373432;
+  --moldSecondaryColor: #f7f6f4;
+  @value moldMainColor: var(--moldMainColor);
+
+  --sorcererMainColor: #fff9a5;
+  --sorcererSecondaryColor: #fefce5;
+  @value sorcererMainColor: var(--sorcererMainColor);
+
+  /* Blue */
+  --colorLightBlue: #a0f9f7;
+  --deepOcean: #29414c;
+
+  /* Translucent */
+  --colorGreyTranslucent: rgba(42, 42, 51, .92);
+  --colorYellowTranslucent: rgba(255, 240, 51, .75);
+  @value colorGreyTranslucent: var(--colorGreyTranslucent);
+  @value colorYellowTranslucent: var(--colorYellowTranslucent);
+
+  /* extras */
+  --colorCosmicPink: #ff66fb;
+  @value colorCosmicPink: var(--colorCosmicPink);
+}

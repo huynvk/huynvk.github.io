@@ -1,0 +1,15 @@
+@custom-media --xxs-only (min-width: 0) and (max-width: 479px);
+
+@custom-media --xs-only (min-width: 480px) and (max-width: 539px);
+@custom-media --xs-up (min-width: 480px);
+
+@custom-media --small-only (min-width: 540px) and (max-width: 768px);
+@custom-media --small-up (min-width: 540px);
+
+@custom-media --medium-only (min-width: 769px) and (max-width: 1019px);
+@custom-media --medium-up (min-width: 769px);
+
+@custom-media --large-only (min-width: 1020px) and (max-width: 1199px);
+@custom-media --large-up (min-width: 1020px);
+
+@custom-media --xlarge-up (min-width: 1200px);
