@@ -18,7 +18,7 @@ module.exports = {
   siteMetadata: {
     title: `Huy Ngo`,
     author: `Huy Ngo`,
-    description: `Huy Ngo Personal Blog | Programming and Life`,
+    description: `Personal Blog | Programming and Life`,
     siteUrl: `https://www.huynvk.dev`,
   },
   plugins: [
@@ -33,6 +33,7 @@ module.exports = {
           "@utils": "src/utils",
           "@constants": "src/constants",
           "@templates": "src/templates",
+          "@styles": "src/styles",
         },
         extensions: [],
       },
@@ -82,9 +83,10 @@ module.exports = {
             },
           },
           `gatsby-remark-smartypants`,
-          `gatsby-plugin-react-helmet`,
         ],
       },
     },
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-postcss`,
   ],
 }
