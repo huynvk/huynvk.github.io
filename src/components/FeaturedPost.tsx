@@ -48,6 +48,10 @@ const StyledContainer = styled.div`
     background-image: none;
   }
 
+  h2 {
+    margin-top: 0;
+  }
+
   @media only screen and (max-width: 767px) {
     article {
       display: block;
@@ -66,6 +70,10 @@ const StyledContainer = styled.div`
         width: 100%;
         padding: 0;
       }
+
+      h2 {
+        margin-top: 1rem;
+      }
     }
   }
 `
@@ -81,7 +89,7 @@ const FeaturedPost = (props: IProps) => {
             <Image sizes={heroImage.fluid} alt={slug} />
           </div>
           <div className="content">
-            <h2>{title}</h2>
+            <h2 className="title">{title}</h2>
             <p className="description">{description}</p>
             <div className="info">{publishDate}</div>
           </div>

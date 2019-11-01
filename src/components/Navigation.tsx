@@ -12,7 +12,7 @@ const StyledContainer = styled.div`
   pointer-events: none;
   position: fixed;
   top: 0;
-  height: 2rem;
+  height: 3rem;
   width: 100%;
   z-index: 1000;
   background: #fff;
@@ -38,6 +38,7 @@ const StyledContainer = styled.div`
     text-shadow: none;
     margin-left: 2rem;
     margin-bottom: 1rem;
+    cursor: pointer;
   }
 
   @media ${screenSizes.mediumUp} {

@@ -25,8 +25,6 @@ customTheme.overrideThemeStyles = () => {
   }
 }
 
-console.log("customTheme", customTheme)
-
 const typography = new Typography(customTheme)
 
 // @ts-ignore

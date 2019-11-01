@@ -47,7 +47,7 @@ const HamburgerButton = styled.div`
 const MenuPanel = styled.div`
   position: absolute;
   padding-top: 3rem;
-  top: -1rem;
+  top: -1.5rem;
   height: 100vh;
   width: 20rem;
   background-color: #707a9e;
