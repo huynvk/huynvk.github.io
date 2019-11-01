@@ -42,7 +42,7 @@ const MainContainer = styled.div`
   }
 `
 
-function Layout({ children }) {
+function Layout({ children, noMenuBackground }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const node = useRef(null)
   useOnClickOutside(node, () => setMenuOpen(false))
@@ -55,6 +55,7 @@ function Layout({ children }) {
             ref={node}
             open={menuOpen}
             onToggleMenu={() => setMenuOpen(!menuOpen)}
+            noBackground={noMenuBackground}
           />
         </HeaderContainer>
         <MainContainer>

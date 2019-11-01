@@ -11,5 +11,5 @@ const LogoContainer = styled.div`
 `
 
 export default function Logo() {
-  return <LogoContainer>AAA</LogoContainer>
+  return <LogoContainer>HUYNVK</LogoContainer>
 }

@@ -15,11 +15,16 @@ const StyledContainer = styled.div`
   height: 3rem;
   width: 100%;
   z-index: 1000;
-  background: #fff;
   padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
-    0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  ${props =>
+    props.noBackground
+      ? ``
+      : `
+      background: #fff;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+        0 2px 6px 2px rgba(60, 64, 67, 0.15);
+    `}
   flex-direction: row;
   align-items: center;
   display: flex;
@@ -67,22 +72,24 @@ const MobileOnly = styled.div`
   }
 `
 
-const Navigation = React.forwardRef(({ open, onToggleMenu }, ref) => (
-  <StyledContainer>
-    <div ref={ref} className="inner-container">
-      <HamburgerMenu open={open} onToggleMenu={onToggleMenu}>
-        <Link to={routeConstants.home.path} className="logo">
+const Navigation = React.forwardRef(
+  ({ open, onToggleMenu, noBackground }, ref) => (
+    <StyledContainer noBackground={noBackground}>
+      <div ref={ref} className="inner-container">
+        <HamburgerMenu open={open} onToggleMenu={onToggleMenu}>
+          <Link to={routeConstants.home.path} className="logo">
+            <Logo />
+          </Link>
+          <Link to={routeConstants.blog.path} className="logo">
+            Blog
+          </Link>
+        </HamburgerMenu>
+        <MobileOnly>
           <Logo />
-        </Link>
-        <Link to={routeConstants.blog.path} className="logo">
-          Blog
-        </Link>
-      </HamburgerMenu>
-      <MobileOnly>
-        <Logo />
-      </MobileOnly>
-    </div>
-  </StyledContainer>
-))
+        </MobileOnly>
+      </div>
+    </StyledContainer>
+  )
+)
 
 export default Navigation

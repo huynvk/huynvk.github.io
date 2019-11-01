@@ -17,7 +17,7 @@ const StyledContainer = styled.div``
 class HomePage extends React.Component<IProps, {}> {
   render() {
     return (
-      <Layout location={this.props.location}>
+      <Layout location={this.props.location} noMenuBackground>
         <StyledContainer>
           <SEO title="Huy Ngo Personal Blog | Programming and Life" />
           Greeting!
