@@ -6,6 +6,7 @@ import Navigation from "@components/Navigation"
 
 import { rhythm, scale } from "@utils/typography"
 import { colors } from "@constants/index"
+import { screenSizes } from "@styles/config.screensizes.js"
 import "./Layout.css"
 
 interface ILayout {
@@ -28,6 +29,17 @@ const AppContainer = styled.div`
 
 const HeaderContainer = styled.div``
 
+const FooterContainer = styled.div`
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.7rem;
+  padding-left: 0.5rem;
+
+  @media ${screenSizes.mediumUp} {
+    padding-left: 2rem;
+  }
+`
+
 const MainContainer = styled.div`
   flex: 1;
   padding: 0;
@@ -42,7 +54,7 @@ const MainContainer = styled.div`
   }
 `
 
-function Layout({ children, noMenuBackground }) {
+function Layout({ children, noMenuBackground, noNavigation }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const node = useRef(null)
   useOnClickOutside(node, () => setMenuOpen(false))
@@ -51,16 +63,21 @@ function Layout({ children, noMenuBackground }) {
     <ThemeProvider theme={theme}>
       <AppContainer>
         <HeaderContainer>
-          <Navigation
-            ref={node}
-            open={menuOpen}
-            onToggleMenu={() => setMenuOpen(!menuOpen)}
-            noBackground={noMenuBackground}
-          />
+          {!noNavigation && (
+            <Navigation
+              ref={node}
+              open={menuOpen}
+              onToggleMenu={() => setMenuOpen(!menuOpen)}
+              noBackground={noMenuBackground}
+            />
+          )}
         </HeaderContainer>
         <MainContainer>
           <main>{children}</main>
         </MainContainer>
+        <FooterContainer>
+          © copyright Ngo Viet Khanh Huy, 2019
+        </FooterContainer>
       </AppContainer>
     </ThemeProvider>
   )
