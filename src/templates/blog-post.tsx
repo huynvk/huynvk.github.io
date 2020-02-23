@@ -7,6 +7,7 @@ import Image from "gatsby-image"
 import Author from "@components/Author"
 import Layout from "@components/Layout"
 import SEO from "@components/SEO"
+import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
 
 interface IProps {
   pageContext: {
@@ -65,6 +66,12 @@ const StyledContainer = styled.div`
 class BlogPostTemplate extends React.Component<IProps, {}> {
   render() {
     const post = get(this.props, "data.postDetails")
+    const { location } = this.props
+    const disqusConfig = {
+      url: location.href,
+      identifier: post.id,
+      title: post.title,
+    }
 
     return (
       <Layout location={this.props.location}>
@@ -74,6 +81,7 @@ class BlogPostTemplate extends React.Component<IProps, {}> {
             <h1>{post.title}</h1>
             <div className="description">{post.description}</div>
             <Author publishDate={post.publishDate} />
+            <CommentCount config={disqusConfig} placeholder={'...'} />
             <div className="hero-image">
               <Image sizes={post.heroImage.fluid} alt="" />
             </div>
@@ -84,6 +92,7 @@ class BlogPostTemplate extends React.Component<IProps, {}> {
               __html: post.body.childMarkdownRemark.html,
             }}
           />
+          <Disqus config={disqusConfig} />
         </StyledContainer>
       </Layout>
     )
@@ -95,6 +104,7 @@ export default BlogPostTemplate
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     postDetails: contentfulBlogPost(slug: { eq: $slug }) {
+      id
       title
       description
       heroImage {
