@@ -7,7 +7,7 @@ import Image from "gatsby-image"
 import Author from "@components/Author"
 import Layout from "@components/Layout"
 import SEO from "@components/SEO"
-import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
+import { Disqus } from 'gatsby-plugin-disqus'
 
 interface IProps {
   pageContext: {
@@ -81,7 +81,6 @@ class BlogPostTemplate extends React.Component<IProps, {}> {
             <h1>{post.title}</h1>
             <div className="description">{post.description}</div>
             <Author publishDate={post.publishDate} />
-            <CommentCount config={disqusConfig} placeholder={'...'} />
             <div className="hero-image">
               <Image sizes={post.heroImage.fluid} alt="" />
             </div>
