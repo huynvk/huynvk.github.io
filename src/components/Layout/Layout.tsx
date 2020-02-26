@@ -7,6 +7,9 @@ import Navigation from "@components/Navigation"
 import { rhythm, scale } from "@utils/typography"
 import { colors } from "@constants/index"
 import { screenSizes } from "@styles/config.screensizes.js"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { faFacebookSquare, faLinkedin, faTwitter, faStackOverflow, faGithub } from '@fortawesome/free-brands-svg-icons'
 import "./Layout.css"
 
 interface ILayout {
@@ -34,9 +37,15 @@ const FooterContainer = styled.div`
   padding-bottom: 0.5rem;
   font-size: 0.7rem;
   padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+  flex-direction: column;
 
   @media ${screenSizes.mediumUp} {
     padding-left: 2rem;
+    padding-right: 2rem;
+    flex-direction: row;
+    justify-content: space-between;
   }
 `
 
@@ -51,6 +60,28 @@ const MainContainer = styled.div`
     margin-top: 4rem;
     max-width: ${props => props.theme.rhythm(25)};
     padding: 0 ${props => props.theme.rhythm(0.5)};
+  }
+`
+
+const Refs = styled.div`
+  a + a {
+    padding-left: 0.5rem;
+  }
+`
+
+const Ref = styled.a`
+  &:hover {
+    color: #4B71E7;
+    cursor: pointer;
+  }
+`
+
+const Copyright = styled.div`
+  line-height: 1.5rem;
+  margin-bottom: 0.5rem;
+
+  @media ${screenSizes.mediumUp} {
+    margin-bottom: 0;
   }
 `
 
@@ -76,7 +107,29 @@ function Layout({ children, noMenuBackground, noNavigation }) {
           <main>{children}</main>
         </MainContainer>
         <FooterContainer>
-          © copyright Ngo Viet Khanh Huy, 2019
+          <Copyright>
+            © copyright Ngo Viet Khanh Huy, 2019
+          </Copyright>
+          <Refs>
+            <Ref href="mailto:huynvk@gmail.com" target="__blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faEnvelope} size="2x" />
+            </Ref>
+            <Ref href="https://github.com/huynvk" target="__blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faGithub} size="2x" />
+            </Ref>
+            <Ref href="https://stackoverflow.com/users/6601687/huy-ngo" target="__blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faStackOverflow} size="2x" />
+            </Ref>
+            <Ref href="https://www.linkedin.com/in/huynvk/" target="__blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faLinkedin} size="2x" />
+            </Ref>
+            <Ref href="https://www.facebook.com/huynvk" target="__blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faFacebookSquare} size="2x" />
+            </Ref>
+            <Ref href="https://twitter.com/huynvk" target="__blank" rel="noopener noreferrer">
+              <FontAwesomeIcon icon={faTwitter} size="2x" />
+            </Ref>
+          </Refs>
         </FooterContainer>
       </AppContainer>
     </ThemeProvider>
