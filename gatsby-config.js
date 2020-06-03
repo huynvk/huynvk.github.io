@@ -46,6 +46,16 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `teko\:700`,
+          `jost\:400,500`,
+          `crimson text\:400i`,
+        ],
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Huy Ngo`,
