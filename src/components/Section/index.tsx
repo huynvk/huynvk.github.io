@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Hero from "./Hero"
 import Contact from "./Contact"
 import Footer from "./Footer"
+import { screenSizes } from "@styles/config.screensizes.js"
 
 export { Hero, Contact, Footer }
 
@@ -54,22 +55,42 @@ const Section = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   max-width: 1040px;
+  ${props =>
+    props.rightAlign
+      ? "flex-direction: column-reverse;"
+      : "flex-direction: column;"}
+
   margin: 0 auto;
-  ${props => (props.column ? "flex-direction: column" : "")}
+  margin-left: 2rem;
+  margin-right: 2rem;
+  min-height: 35rem;
+
+  @media ${screenSizes.mediumUp} {
+    ${props =>
+      props.column ? "flex-direction: column;" : "flex-direction: row;"}
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100vh;
+  }
 `
 
 const SectionTitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: ${props =>
-    props.rightAlign
-      ? "flex-end"
-      : props.centerAlign
-      ? "center"
-      : "flex-start"};
-  ${props => (props.centerAlign ? "" : "flex: 1")}
+  align-items: center;
+  margin-top: 2rem;
+
+  @media ${screenSizes.mediumUp} {
+    margin-top: 0;
+    align-items: ${props =>
+      props.rightAlign
+        ? "flex-end"
+        : props.centerAlign
+        ? "center"
+        : "flex-start"};
+    ${props => (props.centerAlign ? "" : "flex: 1")}
+  }
 `
 
 const SectionTitleText = styled.div`
@@ -112,8 +133,13 @@ const SubSections = styled.div`
   flex: 1;
   margin-top: 1rem;
   font-family: "jost";
-  padding-top: 10rem;
-  padding-bottom: 10rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  @media ${screenSizes.mediumUp} {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
 `
 
 const SubSectionContainer = styled.div`
@@ -186,7 +212,7 @@ export const WorkingPrincipleSection = props => (
 
 export const ExperiencedDomainSection = props =>
   withBackground("#D1DBF8")(
-    <Section>
+    <Section rightAlign>
       <SubSections>
         <SubSection
           title="Fintech"

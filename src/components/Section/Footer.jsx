@@ -1,12 +1,13 @@
 import React from "react"
 import styled from "styled-components"
+import { screenSizes } from "@styles/config.screensizes.js"
 
 const Container = styled.div`
   margin-top: 2rem;
   margin-bottom: 2rem;
   max-width: 1040px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 2rem;
+  margin-right: 2rem;
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
@@ -16,9 +17,16 @@ const Container = styled.div`
     margin-right: 1rem;
     margin-bottom: 0.3rem;
   }
+
+  @media ${screenSizes.mediumUp} {
+    margin-left: auto;
+    margin-right: auto;
+  }
 `
 
-const Text = styled.div``
+const Text = styled.div`
+  color: #404040;
+`
 
 const Name = styled.div`
   font-size: 1.5rem;

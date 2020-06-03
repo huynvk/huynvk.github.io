@@ -1,13 +1,14 @@
 import React from "react"
 import styled from "styled-components"
+import { screenSizes } from "@styles/config.screensizes.js"
 
 const Section = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   margin: 0 auto;
+  min-height: 100vh;
 `
 
 const Columns = styled.div`
@@ -15,13 +16,24 @@ const Columns = styled.div`
   max-width: 1040px;
   justify-content: center;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   flex: 1;
+  flex-direction: column;
+
+  @media ${screenSizes.mediumUp} {
+    flex-direction: row;
+    align-items: flex-end;
+  }
 `
 
 const Column = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  @media ${screenSizes.mediumUp} {
+    align-items: flex-start;
+  }
 
   h1 {
     color: #253873;
@@ -44,8 +56,11 @@ const Column = styled.div`
 
 const Avatar = styled.img`
   width: 15rem;
-  margin-right: 2rem;
-  margin-bottom: 0.3rem;
+
+  @media ${screenSizes.mediumUp} {
+    margin-right: 2rem;
+    margin-bottom: 0.3rem;
+  }
 `
 
 const JobTitle = styled.p`
@@ -59,6 +74,7 @@ const Quotes = styled.p`
   font-family: "Crimson Text", serif;
   font-style: italic;
   font-size: 1.4rem;
+  text-align: center;
 `
 
 const DownButton = styled.div`
@@ -70,7 +86,7 @@ const DownButton = styled.div`
   border-radius: 50%;
   text-align: center;
   line-height: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
 `
 
 const Spacer = styled.div`

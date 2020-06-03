@@ -71,6 +71,7 @@ const Refs = styled.div`
 `
 
 const Ref = styled.a`
+  color: #404040;
   &:hover {
     color: #4b71e7;
     cursor: pointer;
