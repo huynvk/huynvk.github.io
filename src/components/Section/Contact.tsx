@@ -80,7 +80,7 @@ const Ref = styled.a`
 
 export default props =>
   withBackground("#D1DBF8")(
-    <Container>
+    <Container {...props}>
       <Box>
         <Header>Send me a message</Header>
         <Dividor />
