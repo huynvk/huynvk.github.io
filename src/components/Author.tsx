@@ -49,7 +49,7 @@ function Author({ name, avatar, publishDate }: IProps) {
 Author.defaultProps = {
   name: "Huy Ngo",
   avatar:
-    "https://scontent.fsgn4-1.fna.fbcdn.net/v/t1.0-9/14462764_1484474011567069_2277959946074350016_n.jpg?_nc_cat=103&_nc_oc=AQkdBMYkvqAVqppH_Fd7pALe_t0sDx7bRwQLw_cNn5yIJ7cdPMPDqasc9eBpBIkLTvY&_nc_ht=scontent.fsgn4-1.fna&oh=93667ed935858f24545765f69d3679ac&oe=5E5C00DC",
+    "https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.0-9/94506248_3569386086409174_3414613177730596864_o.jpg?_nc_cat=108&_nc_sid=09cbfe&_nc_ohc=cQDBzWVGb98AX8_KUGk&_nc_ht=scontent.fsgn2-3.fna&oh=0501d010bd88d9d8b29d18a725eb9710&oe=5F07635A",
   publishedDate: "Oct 28, 2019",
 }
 
