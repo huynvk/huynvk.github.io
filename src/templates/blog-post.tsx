@@ -7,7 +7,7 @@ import Image from "gatsby-image"
 import Author from "@components/Author"
 import Layout from "@components/Layout"
 import SEO from "@components/SEO"
-import { Disqus } from 'gatsby-plugin-disqus'
+import { Disqus } from "gatsby-plugin-disqus"
 
 interface IProps {
   pageContext: {
@@ -59,6 +59,10 @@ const StyledContainer = styled.div`
 
     img {
       width: 100%;
+    }
+
+    a {
+      color: rgb(40, 62, 153);
     }
   }
 `
