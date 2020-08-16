@@ -48,8 +48,7 @@ function Author({ name, avatar, publishDate }: IProps) {
 
 Author.defaultProps = {
   name: "Huy Ngo",
-  avatar:
-    "https://scontent.fsgn2-3.fna.fbcdn.net/v/t1.0-9/94506248_3569386086409174_3414613177730596864_o.jpg?_nc_cat=108&_nc_sid=09cbfe&_nc_ohc=cQDBzWVGb98AX8_KUGk&_nc_ht=scontent.fsgn2-3.fna&oh=0501d010bd88d9d8b29d18a725eb9710&oe=5F07635A",
+  avatar: "../avatar.jpg",
   publishedDate: "Oct 28, 2019",
 }
 
