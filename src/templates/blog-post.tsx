@@ -83,7 +83,7 @@ class BlogPostTemplate extends React.Component<IProps, {}> {
         location={this.props.location}
         seoProps={{
           title: `Huy Ngo | ${post.title}`,
-          image: ogImg,
+          image: `https:${ogImg.substring(0, ogImg.indexOf("?"))}`,
         }}
       >
         <StyledContainer>

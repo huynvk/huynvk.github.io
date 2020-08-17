@@ -6,7 +6,6 @@ import get from "lodash/get"
 import Layout from "@components/Layout"
 import FeaturedPost from "@components/FeaturedPost"
 import ThumbnailPost from "@components/ThumbnailPost"
-import SEO from "@components/SEO"
 
 interface IProps {
   location: ILocation
@@ -52,9 +51,11 @@ class HomePage extends React.Component<IProps, {}> {
     const featuredPost = posts.shift()
 
     return (
-      <Layout location={this.props.location}>
+      <Layout
+        location={this.props.location}
+        seoProps={{ title: "Huy Ngo Personal Blog | Programming and Life" }}
+      >
         <StyledContainer>
-          <SEO title="Huy Ngo Personal Blog | Programming and Life" />
           <div className="featured-post-container">
             <FeaturedPost
               title={featuredPost.title}
