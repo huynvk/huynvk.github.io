@@ -6,7 +6,6 @@ import Image from "gatsby-image"
 
 import Author from "@components/Author"
 import Layout from "@components/Layout"
-import SEO from "@components/SEO"
 import { Disqus } from "gatsby-plugin-disqus"
 
 interface IProps {
@@ -76,18 +75,27 @@ class BlogPostTemplate extends React.Component<IProps, {}> {
       identifier: post.id,
       title: post.title,
     }
+    const heroImg = post.heroImage
+    const ogImg = heroImg && heroImg.fluid ? heroImg.fluid.src : ""
 
     return (
-      <Layout location={this.props.location}>
+      <Layout
+        location={this.props.location}
+        seoProps={{
+          title: `Huy Ngo | ${post.title}`,
+          image: ogImg,
+        }}
+      >
         <StyledContainer>
-          <SEO title={`Huy Ngo | ${post.title}`} />
           <div className="header-container">
             <h1>{post.title}</h1>
             <div className="description">{post.description}</div>
             <Author publishDate={post.publishDate} />
-            <div className="hero-image">
-              <Image sizes={post.heroImage.fluid} alt="" />
-            </div>
+            {heroImg && (
+              <div className="hero-image">
+                <Image sizes={post.heroImage.fluid} alt="" />
+              </div>
+            )}
           </div>
           <div
             className="body-container"

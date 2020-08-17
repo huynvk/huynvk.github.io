@@ -39,7 +39,7 @@ const Copyright = styled.div``
 export default () => (
   <div>
     <Container>
-      <img src="icon.png" />
+      <img src="icon.png" alt="icon" />
       <Text>
         <Name>Huy Ngo</Name>
         <Copyright>2020 © Ngo Viet Khanh Huy. All right reserved.</Copyright>
