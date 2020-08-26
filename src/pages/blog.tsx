@@ -16,6 +16,7 @@ interface IPost {
   slug: string
   publishDate: string
   description: string
+  isVietnamese: boolean
   heroImage: {
     fluid: {
       aspectRatio: number
@@ -43,7 +44,54 @@ const StyledContainer = styled.div`
   }
 `
 
+const ToggleContainer = styled.div`
+  margin-bottom: 2rem;
+`
+
+const Toogle = styled.a`
+  color: ${props => (props.isSelected ? "#fff" : "#000")};
+  background-color: ${props => (props.isSelected ? "#f5a623" : "#fff")};
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #c78c2a;
+  }
+`
+
+type Filter = "All" | "Tiếng Việt" | "English"
+const allFilters = ["All", "Tiếng Việt", "English"]
+
+const LanguageToggle = ({ selectedFilter, onSelected }) => (
+  <ToggleContainer>
+    {allFilters.map(filter => (
+      <Toogle
+        isSelected={filter === selectedFilter}
+        onClick={() => onSelected(filter)}
+      >
+        {filter}
+      </Toogle>
+    ))}
+  </ToggleContainer>
+)
+
+const shouldDisplayPost = (isVietnamese: Boolean, filter: Filter) => {
+  if (filter === "All") {
+    return true
+  }
+
+  return (
+    (filter === "Tiếng Việt" && isVietnamese) ||
+    (filter === "English" && !isVietnamese)
+  )
+}
+
 class HomePage extends React.Component<IProps, {}> {
+  state = {
+    filter: "All" as Filter,
+  }
+
   render() {
     const posts = get(this, "props.data.allPosts.edges").map(
       (item: { node: IPost }) => item.node
@@ -52,30 +100,28 @@ class HomePage extends React.Component<IProps, {}> {
 
     return (
       <Layout
-        location={this.props.location}
         seoProps={{ title: "Huy Ngo Personal Blog | Programming and Life" }}
       >
         <StyledContainer>
-          <div className="featured-post-container">
-            <FeaturedPost
-              title={featuredPost.title}
-              slug={featuredPost.slug}
-              publishDate={featuredPost.publishDate}
-              description={featuredPost.description}
-              heroImage={featuredPost.heroImage}
-            />
-          </div>
+          <LanguageToggle
+            selectedFilter={this.state.filter}
+            onSelected={value => this.setState({ filter: value })}
+          />
           <div className="thumbnail-post-container">
-            {posts.map((post: IPost) => (
-              <ThumbnailPost
-                key={post.slug}
-                title={post.title}
-                slug={post.slug}
-                publishDate={post.publishDate}
-                description={post.description}
-                heroImage={post.heroImage}
-              />
-            ))}
+            {posts.map((post: IPost) => {
+              return (
+                shouldDisplayPost(post.isVietnamese, this.state.filter) && (
+                  <ThumbnailPost
+                    key={post.slug}
+                    title={post.title}
+                    slug={post.slug}
+                    publishDate={post.publishDate}
+                    description={post.description}
+                    heroImage={post.heroImage}
+                  />
+                )
+              )
+            })}
           </div>
         </StyledContainer>
       </Layout>
@@ -104,6 +150,7 @@ export const pageQuery = graphql`
           }
           slug
           publishDate(formatString: "MMM DD, YYYY")
+          isVietnamese
         }
       }
     }

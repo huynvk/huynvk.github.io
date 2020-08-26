@@ -18,11 +18,6 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 import "./Layout.css"
 
-interface ILayout {
-  location: ILocation
-  children: any
-}
-
 const theme = {
   rhythm,
   scale,
