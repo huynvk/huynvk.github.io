@@ -96,7 +96,6 @@ class HomePage extends React.Component<IProps, {}> {
     const posts = get(this, "props.data.allPosts.edges").map(
       (item: { node: IPost }) => item.node
     )
-    const featuredPost = posts.shift()
 
     return (
       <Layout
