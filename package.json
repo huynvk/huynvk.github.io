@@ -41,6 +41,7 @@
     "postcss-custom-media": "7.0.8",
     "prismjs": "1.21.0",
     "react": "16.10.2",
+    "react-calendly": "^1.1.0",
     "react-dom": "16.10.2",
     "react-helmet": "5.2.1",
     "react-typography": "0.16.19",

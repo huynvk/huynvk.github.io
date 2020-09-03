@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { openPopupWidget } from "react-calendly"
 
 const withBackground = color => c => (
   <div style={{ backgroundColor: color }}>{c}</div>
@@ -82,13 +83,19 @@ export default props =>
   withBackground("#D1DBF8")(
     <Container {...props}>
       <Box>
-        <Header>Send me a message</Header>
+        <Header>Short Video Call</Header>
         <Dividor />
         <Paragraph>
-          Get in touch by sending me a message, or contact me via other
-          platforms
+          Let me know your problems via a 15-minute call. A short call could be
+          super helpful to identify the needs and see anyway I can help you.
         </Paragraph>
-        <CTA href="mailto:huynvk@gmail.com">Send Message</CTA>
+        <CTA
+          onClick={() =>
+            openPopupWidget({ url: "https://calendly.com/huynvk/15min" })
+          }
+        >
+          Schedule A Call
+        </CTA>
       </Box>
       <Refs>
         <Ref
