@@ -4,12 +4,12 @@ html {
 
 @media (--xs-up) {
   html {
-    font-size: 130%;
+    font-size: 130% !important;
   }
 }
 
 @media (--xlarge-up) {
   html {
-    font-size: 160%;
+    font-size: 160% !important;
   }
 }
