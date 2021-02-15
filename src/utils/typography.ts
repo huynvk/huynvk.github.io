@@ -33,6 +33,7 @@ typography.overrideStyles = () => {
     body: {
       background: "#FFFFFF",
     },
+    baseFontSize: "15px",
   }
 }
 
