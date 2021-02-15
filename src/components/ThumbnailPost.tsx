@@ -23,6 +23,7 @@ const StyledContainer = styled.div`
 
   article {
     padding-right: ${props => props.theme.rhythm(1)};
+    margin-bottom: 1rem;
 
     .thumb {
       img {
@@ -34,11 +35,16 @@ const StyledContainer = styled.div`
 
     .content {
       padding: 0 ${props => props.theme.rhythm(0.5)} 0 0;
+
+      h2 {
+        margin-top: 1rem;
+      }
     }
 
     .description,
     .info {
       color: ${props => props.theme.colors.gray500};
+      margin-top: 0;
     }
 
     .info {
@@ -89,8 +95,8 @@ const ThumbnailPost = (props: IProps) => {
           </div>
           <div className="content">
             <h2>{title}</h2>
-            <p className="description">{description}</p>
             <div className="info">{publishDate}</div>
+            <p className="description">{description}</p>
           </div>
         </Link>
       </article>
