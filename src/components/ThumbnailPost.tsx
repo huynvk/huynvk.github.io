@@ -18,38 +18,46 @@ interface IProps {
   }
 }
 
+const ThumbnailContainer = styled.div`
+  width: 100%;
+  padding-bottom: 60%;
+  position: relative;
+  overflow: hidden;
+
+  .gatsby-image-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute !important;
+  }
+`
+
 const StyledContainer = styled.div`
-  width: 33.3333%;
+  width: 48%;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
 
-  article {
-    padding-right: ${props => props.theme.rhythm(1)};
-    margin-bottom: 1rem;
+  .content {
+    padding: 0 0.5rem;
+  }
 
-    .thumb {
-      img {
-        height: ${props => props.theme.rhythm(8)};
-        border: 1px solid rgba(0, 0, 0, 0.15);
-        width: 100%;
-      }
-    }
+  h2 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+    color: #253873;
+  }
 
-    .content {
-      padding: 0 ${props => props.theme.rhythm(0.5)} 0 0;
+  .info {
+    font-size: 0.6rem;
+  }
 
-      h2 {
-        margin-top: 1rem;
-      }
-    }
-
-    .description,
-    .info {
-      color: ${props => props.theme.colors.gray500};
-      margin-top: 0;
-    }
-
-    .info {
-      ${props => ({ ...props.theme.scale(-0.5) })}
-    }
+  .description {
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
   }
 
   a {
@@ -57,29 +65,14 @@ const StyledContainer = styled.div`
     background-image: none;
   }
 
+  :hover {
+    .gatsby-image-wrapper {
+      transform: scale(1.05);
+    }
+  }
+
   @media only screen and (max-width: 767px) {
     width: 100%;
-
-    article {
-      display: block;
-      padding-right: 0;
-
-      .thumb {
-        width: 100%;
-        padding-right: 0;
-
-        img {
-          height: ${props => props.theme.rhythm(7)};
-          width: 100%;
-        }
-      }
-
-      .content {
-        width: 100%;
-        padding: 0;
-        margin-bottom: ${props => props.theme.rhythm(1.25)};
-      }
-    }
   }
 `
 
@@ -88,18 +81,16 @@ const ThumbnailPost = (props: IProps) => {
 
   return (
     <StyledContainer>
-      <article>
-        <Link to={`/blog/${slug}`}>
-          <div className="thumb">
-            <Image sizes={heroImage.fluid} alt="" />
-          </div>
-          <div className="content">
-            <h2>{title}</h2>
-            <div className="info">{publishDate}</div>
-            <p className="description">{description}</p>
-          </div>
-        </Link>
-      </article>
+      <Link to={`/blog/${slug}`}>
+        <ThumbnailContainer>
+          <Image sizes={heroImage.fluid} alt="" />
+        </ThumbnailContainer>
+        <div className="content">
+          <h2>{title}</h2>
+          <div className="info">{publishDate}</div>
+          <p className="description">{description}</p>
+        </div>
+      </Link>
     </StyledContainer>
   )
 }

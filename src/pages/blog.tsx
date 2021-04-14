@@ -35,12 +35,7 @@ const StyledContainer = styled.div`
   .thumbnail-post-container {
     display: flex;
     flex-wrap: wrap;
-  }
-
-  @media only screen and (max-width: 767px) {
-    .thumbnail-post-container {
-      display: block;
-    }
+    justify-content: space-between;
   }
 `
 
