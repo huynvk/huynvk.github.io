@@ -32,9 +32,9 @@ const ThumbnailContainer = styled.div`
 `
 
 const StyledContainer = styled.div`
-  width: 32%;
+  width: 100%;
   border-radius: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   overflow: hidden;
   background: #fff;
   border-radius: 0.2rem;
@@ -46,22 +46,16 @@ const StyledContainer = styled.div`
   }
 
   h2 {
-    font-size: 0.8rem;
     font-weight: 500;
-    line-height: 1rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0;
+    margin-top: 0.8rem;
     color: #253873;
   }
 
   .info {
-    font-size: 0.4rem;
+    margin-bottom: 0.3rem;
   }
 
   .description {
-    font-size: 0.8rem;
-    margin-top: 0.2rem;
-    margin-bottom: 0.2rem;
     display: none;
   }
 
@@ -76,8 +70,27 @@ const StyledContainer = styled.div`
     }
   }
 
-  @media only screen and (max-width: 767px) {
-    width: 100%;
+  @media only screen and (min-width: 767px) {
+    width: 32%;
+    margin-bottom: 0.5rem;
+
+    h2 {
+      font-size: 0.8rem;
+      line-height: 1rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+    }
+
+    .info {
+      font-size: 0.4rem;
+      margin-botton: 0;
+    }
+
+    .description {
+      font-size: 0.8rem;
+      margin-top: 0.2rem;
+      margin-bottom: 0.2rem;
+    }
   }
 `
 

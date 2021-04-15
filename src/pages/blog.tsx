@@ -41,13 +41,17 @@ const StyledContainer = styled.div`
 
 const ToggleContainer = styled.div`
   margin-bottom: 2rem;
-  height: 2rem;
+  height: 2.5rem;
   display: flex;
   flex-direction: row;
 
   span {
     flex: 1;
     border-bottom: 3px solid #ccc;
+  }
+
+  @media only screen and (min-width: 767px) {
+    height: 2.5rem;
   }
 `
 
