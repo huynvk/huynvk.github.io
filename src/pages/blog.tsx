@@ -41,22 +41,30 @@ const StyledContainer = styled.div`
 
 const ToggleContainer = styled.div`
   margin-bottom: 2rem;
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+
+  span {
+    flex: 1;
+    border-bottom: 3px solid #ccc;
+  }
 `
 
 const Toogle = styled.a`
-  color: ${props => (props.isSelected ? "#fff" : "#000")};
-  background-color: ${props => (props.isSelected ? "#f5a623" : "#fff")};
-  border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
-  cursor: pointer;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  border-bottom-color: ${props => (props.isSelected ? "#f5a623" : "#ccc")};
+  cursor: ${props => (props.isSelected ? "default" : "pointer")};
 
   &:hover {
-    background-color: #c78c2a;
+    color: ${props => (props.isSelected ? "unset" : "#f5a623")};
   }
 `
 
 type Filter = "All" | "Tiếng Việt" | "English"
-const allFilters = ["All", "Tiếng Việt", "English"]
+const allFilters = ["English", "Tiếng Việt", "All"]
 
 const LanguageToggle = ({ selectedFilter, onSelected }) => (
   <ToggleContainer>
@@ -68,6 +76,7 @@ const LanguageToggle = ({ selectedFilter, onSelected }) => (
         {filter}
       </Toogle>
     ))}
+    <span />
   </ToggleContainer>
 )
 
@@ -84,7 +93,7 @@ const shouldDisplayPost = (isVietnamese: Boolean, filter: Filter) => {
 
 class HomePage extends React.Component<IProps, {}> {
   state = {
-    filter: "All" as Filter,
+    filter: "English" as Filter,
   }
 
   render() {
