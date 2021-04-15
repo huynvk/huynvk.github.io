@@ -28,7 +28,8 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: ${props => props.theme.colors.mainBackground};
+  background: ${props =>
+    props.mainBackground || props.theme.colors.mainBackground};
 `
 
 const HeaderContainer = styled.div``
@@ -86,7 +87,13 @@ const Copyright = styled.div`
   }
 `
 
-function Layout({ children, noMenuBackground, noNavigation, seoProps }) {
+function Layout({
+  children,
+  noMenuBackground,
+  mainBackground,
+  noNavigation,
+  seoProps,
+}) {
   const [menuOpen, setMenuOpen] = useState(false)
   const node = useRef(null)
   useOnClickOutside(node, () => setMenuOpen(false))
@@ -94,7 +101,7 @@ function Layout({ children, noMenuBackground, noNavigation, seoProps }) {
   return (
     <SEO {...seoProps}>
       <ThemeProvider theme={theme}>
-        <AppContainer>
+        <AppContainer mainBackground={mainBackground}>
           <HeaderContainer>
             {!noNavigation && (
               <Navigation

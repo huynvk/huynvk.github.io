@@ -95,6 +95,7 @@ class HomePage extends React.Component<IProps, {}> {
     return (
       <Layout
         seoProps={{ title: "Huy Ngo Personal Blog | Programming and Life" }}
+        mainBackground="#eee"
       >
         <StyledContainer>
           <LanguageToggle

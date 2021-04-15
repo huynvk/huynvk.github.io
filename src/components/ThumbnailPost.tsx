@@ -32,32 +32,37 @@ const ThumbnailContainer = styled.div`
 `
 
 const StyledContainer = styled.div`
-  width: 48%;
-  border: 1px solid #ddd;
+  width: 32%;
   border-radius: 0.5rem;
   margin-bottom: 0.5rem;
   overflow: hidden;
+  background: #fff;
+  border-radius: 0.2rem;
+  padding-bottom: 0.5rem;
+  box-shadow: 5px 10px 5px #ddd;
 
   .content {
     padding: 0 0.5rem;
   }
 
   h2 {
-    font-size: 1rem;
-    line-height: 1.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1rem;
     margin-top: 0.5rem;
     margin-bottom: 0;
     color: #253873;
   }
 
   .info {
-    font-size: 0.6rem;
+    font-size: 0.4rem;
   }
 
   .description {
     font-size: 0.8rem;
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
+    display: none;
   }
 
   a {
