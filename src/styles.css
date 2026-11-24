@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@import "@fontsource-variable/inter";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --color-accent-300: #c4b5fd;
+  --color-accent-400: #a78bfa;
+  --color-accent-500: #818cf8;
+  --color-accent-600: #6366f1;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  @apply bg-zinc-950 font-sans text-zinc-100 antialiased selection:bg-accent-600/40;
+  font-feature-settings: "cv11", "ss01";
+}
+
+/* Soft glow + fading grid used behind hero sections */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(
+    ellipse 70% 60% at 50% 0%,
+    #000 40%,
+    transparent 100%
+  );
+}
+
+.text-gradient {
+  @apply bg-gradient-to-r from-white via-zinc-200 to-accent-300 bg-clip-text text-transparent;
+}
+
+/* Post body (HTML pre-rendered at build time) */
+.prose figure[data-rehype-pretty-code-figure] {
+  @apply my-6;
+}
+.prose figure[data-rehype-pretty-code-figure] pre {
+  @apply overflow-x-auto rounded-xl border border-white/10 px-0 py-4 text-sm leading-relaxed;
+}
+.prose figure[data-rehype-pretty-code-figure] code {
+  @apply grid bg-transparent p-0;
+}
+.prose [data-line] {
+  @apply px-5;
+}
+.prose :not(pre) > code {
+  @apply rounded-md bg-white/10 px-1.5 py-0.5 font-medium text-zinc-100 before:content-none after:content-none;
+}
+.prose figure:not([data-rehype-pretty-code-figure]) img {
+  @apply mx-auto rounded-xl;
+}
+.prose figcaption {
+  @apply text-center text-zinc-500;
+}
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: none;
+}

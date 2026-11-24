@@ -1,97 +1,40 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's hello-world starter
-</h1>
+# huynvk.github.io
 
-Kick off your project with this hello-world boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+Source for [www.huynvk.dev](https://www.huynvk.dev), my personal site and blog.
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+**Stack:** Vite + React 19 + [vite-react-ssg](https://github.com/Daydreamer-riri/vite-react-ssg) (every route is pre-rendered to static HTML), Tailwind CSS v4, blog content from Contentful fetched at build time, and deploys to GitHub Pages via GitHub Actions.
 
-## 🚀 Quick start
+## Development
 
-1.  **Create a Gatsby site.**
+Requires Node 22 (`nvm use`).
 
-    Use the Gatsby CLI to create a new site, specifying the hello-world starter.
+```sh
+cp .env.example .env   # fill in Contentful space ID + Content Delivery API token
+npm install
+npm run dev            # fetch content, then start the dev server
+npm run build          # fetch content, then pre-render the site into dist/
+npm run preview        # serve dist/
+```
 
-    ```shell
-    # create a new Gatsby site using the hello-world starter
-    gatsby new my-hello-world-starter https://github.com/gatsbyjs/gatsby-starter-hello-world
-    ```
+Without Contentful credentials, local runs fall back to sample posts (`scripts/sample-posts.ts`). CI fails instead.
 
-1.  **Start developing.**
+## How it works
 
-    Navigate into your new site’s directory and start it up.
+- `scripts/fetch-content.ts` pulls all `blogPost` entries from Contentful, renders markdown to HTML (GFM, smartypants, Shiki syntax highlighting, captioned and optimized images), and writes `src/content/` (git-ignored).
+- `src/routes.tsx` defines `/`, `/blog`, `/blog/:slug` (one page per post via `getStaticPaths`) and a 404 page.
+- Blog post data is loaded by a route `loader` that only runs at build time, so post bodies never ship in the JS bundle.
 
-    ```shell
-    cd my-hello-world-starter/
-    gatsby develop
-    ```
+## Deployment
 
-1.  **Open the source code and start editing!**
+`.github/workflows/deploy.yml` builds and deploys on every push to `master`, on manual dispatch, and on a `contentful-publish` repository dispatch.
 
-    Your site is now running at `http://localhost:8000`!
+One-time setup:
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
-
-    Open the `my-hello-world-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
-
-## 🧐 What's inside?
-
-A quick look at the top-level files and directories you'll see in a Gatsby project.
-
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
-
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
-
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
-
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
-
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
-
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
-
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
-
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
-
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
-
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-hello-world)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+1. **Settings → Pages → Source:** GitHub Actions. Custom domain: `www.huynvk.dev`, Enforce HTTPS. (`public/CNAME` is included in the build.)
+2. **Settings → Secrets → Actions:** add `CONTENTFUL_SPACE_ID` and `CONTENTFUL_DELIVERY_TOKEN`.
+3. **DNS:** `www` → CNAME `huynvk.github.io`. The apex `huynvk.dev` gets A records `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`.
+4. **Contentful webhook** (Settings → Webhooks), to rebuild on publish:
+   - URL: `POST https://api.github.com/repos/huynvk/huynvk.github.io/dispatches`
+   - Triggers: Entry and Asset publish / unpublish
+   - Headers: `Authorization: Bearer <fine-grained PAT with Contents: read & write on this repo>`, `Accept: application/vnd.github+json`
+   - Custom payload: `{"event_type": "contentful-publish"}`
