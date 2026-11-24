@@ -21,7 +21,7 @@ export function Seo({
   const { pathname } = useLocation()
   const fullTitle = title
     ? `${title} | ${site.title}`
-    : `${site.title} | ${site.description}`
+    : site.title
   const desc = description || site.description
   const url = site.url + (pathname.endsWith("/") ? pathname : `${pathname}/`)
   const img = image || site.url + site.defaultImage

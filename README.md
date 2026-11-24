@@ -1,6 +1,6 @@
 # huynvk.github.io
 
-Source for [www.huynvk.dev](https://www.huynvk.dev): landing page and blog.
+Source for [www.huynvk.dev](https://www.huynvk.dev), my personal site and blog.
 
 **Stack:** Vite + React 19 + [vite-react-ssg](https://github.com/Daydreamer-riri/vite-react-ssg) (every route is pre-rendered to static HTML), Tailwind CSS v4, blog content from Contentful fetched at build time, and deploys to GitHub Pages via GitHub Actions.
 

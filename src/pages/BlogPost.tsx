@@ -1,6 +1,6 @@
 import { Link, useLoaderData, type LoaderFunctionArgs } from "react-router-dom"
 import { HiArrowLeft } from "react-icons/hi2"
-import { Layout } from "@/components/Layout"
+import { Glow, Layout } from "@/components/Layout"
 import { Seo } from "@/components/Seo"
 import { Author } from "@/components/Author"
 import { imageSrcSet, imageUrl } from "@/lib/format"
@@ -45,39 +45,43 @@ export function Component() {
         type="article"
         lang={isVietnamese ? "vi" : "en"}
       />
-      <article className="mx-auto max-w-3xl px-5 py-12">
-        <Link
-          to="/blog"
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-ink/55 hover:text-brand-600"
-        >
-          <HiArrowLeft className="size-4" /> All posts
-        </Link>
-        <header className="mt-6">
-          <h1 className="text-4xl font-semibold leading-tight tracking-tight text-ink md:text-5xl">
-            {title}
-          </h1>
-          {description && (
-            <p className="mt-4 text-xl text-ink/60">{description}</p>
+      <article className="relative isolate">
+        <Glow />
+        <div className="mx-auto max-w-3xl px-5 pb-24 pt-12 sm:pt-16">
+          <Link
+            to="/blog"
+            className="group inline-flex items-center gap-1.5 text-sm text-zinc-500 transition-colors hover:text-zinc-100"
+          >
+            <HiArrowLeft className="size-4 transition-transform group-hover:-translate-x-0.5" />{" "}
+            Writing
+          </Link>
+          <header className="mt-8">
+            <h1 className="text-gradient text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
+              {title}
+            </h1>
+            {description && (
+              <p className="mt-4 text-lg text-zinc-400">{description}</p>
+            )}
+            <div className="mt-8">
+              <Author publishDate={publishDate} />
+            </div>
+          </header>
+          {heroImage && (
+            <img
+              src={imageUrl(heroImage.url, 1020)}
+              srcSet={imageSrcSet(heroImage.url, [640, 1020, 1600])}
+              sizes="(min-width: 768px) 720px, 100vw"
+              alt={heroImage.alt}
+              width={heroImage.width}
+              height={heroImage.height}
+              className="mt-10 h-auto w-full rounded-2xl border border-white/10 object-cover"
+            />
           )}
-          <div className="mt-6">
-            <Author publishDate={publishDate} />
-          </div>
-        </header>
-        {heroImage && (
-          <img
-            src={imageUrl(heroImage.url, 1020)}
-            srcSet={imageSrcSet(heroImage.url, [640, 1020, 1600])}
-            sizes="(min-width: 768px) 720px, 100vw"
-            alt={heroImage.alt}
-            width={heroImage.width}
-            height={heroImage.height}
-            className="mt-10 h-auto w-full rounded-2xl object-cover shadow-sm"
+          <div
+            className="prose prose-invert prose-zinc mt-12 max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-accent-400 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-accent-500 prose-blockquote:font-normal prose-blockquote:text-zinc-300 prose-img:rounded-xl sm:prose-lg"
+            dangerouslySetInnerHTML={{ __html: html }}
           />
-        )}
-        <div
-          className="prose prose-lg mt-10 max-w-none prose-headings:font-semibold prose-headings:text-ink prose-a:text-brand-600 prose-blockquote:border-l-accent-500 prose-blockquote:font-quote prose-blockquote:text-2xl prose-blockquote:font-normal prose-img:rounded-lg"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+        </div>
       </article>
     </Layout>
   )
