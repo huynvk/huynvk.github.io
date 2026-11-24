@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@import "@fontsource/jost/400.css";
+@import "@fontsource/jost/500.css";
+@import "@fontsource/jost/600.css";
+@import "@fontsource/teko/500.css";
+@import "@fontsource/teko/600.css";
+@import "@fontsource/crimson-text/400-italic.css";
+
+@theme {
+  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Teko", ui-sans-serif, system-ui, sans-serif;
+  --font-quote: "Crimson Text", ui-serif, Georgia, serif;
+
+  --color-ink: #1b2340;
+  --color-brand-50: #f1f4fd;
+  --color-brand-100: #dfe6fa;
+  --color-brand-200: #c5d1f5;
+  --color-brand-500: #4b6bd1;
+  --color-brand-600: #3854ad;
+  --color-brand-700: #2d4490;
+  --color-brand-800: #253873;
+  --color-brand-900: #1e2a5a;
+  --color-accent-400: #f8b84a;
+  --color-accent-500: #f5a623;
+  --color-accent-600: #d88c0f;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  @apply bg-white font-sans text-ink antialiased;
+}
+
+/* Code blocks rendered at build time by rehype-pretty-code */
+.prose figure[data-rehype-pretty-code-figure] {
+  @apply my-6;
+}
+.prose figure[data-rehype-pretty-code-figure] pre {
+  @apply overflow-x-auto rounded-xl px-0 py-4 text-sm leading-relaxed;
+}
+.prose figure[data-rehype-pretty-code-figure] code {
+  @apply grid bg-transparent p-0;
+}
+.prose [data-line] {
+  @apply px-5;
+}
+.prose :not(pre) > code {
+  @apply rounded bg-brand-50 px-1.5 py-0.5 font-medium text-brand-800 before:content-none after:content-none;
+}
+.prose figure:not([data-rehype-pretty-code-figure]) img {
+  @apply mx-auto rounded-lg;
+}
+.prose figcaption {
+  @apply text-center;
+}
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: none;
+}
